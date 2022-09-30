@@ -1,19 +1,23 @@
-<p style="color: green"><%= notice %></p>
 
 <% if current_user %>
-  <h1>Groups</h1>
+  <%= render "header" %>
   <div id="groups">
     <% @groups.each do |group| %>
-      <%= render group %>
-      <p>
-        <%= button_to "Show this group", group_expenses_path(group_id: group.id), method: :get %>
-      </p>
+        <%= link_to group_expenses_path(group_id: group.id)  do %>
+          <%= render group %>
+        <%end%>
     <% end %>
   </div>
 
-  <%= link_to "New group", new_group_path %>
+  <div class="new-group-btn-container">
+    <%= link_to "New category", new_group_path, class:"new-group-btn" %>
+  </div>
 <% else %>
-  <h1>WhereIsMoney</h1>
-  <%= button_to 'LOG IN', new_user_session_path, method: :get %>
-  <%= button_to 'SIGN UP', new_user_registration_path, method: :get %>
+  <div class="splash-logo-container">
+    <h1>Zaka</h1>
+  </div>
+  <div class="auth-btn-container">
+    <%= button_to 'LOG IN', new_user_session_path, class: "login-btn", method: :get %>
+    <%= button_to 'SIGN UP', new_user_registration_path, class: "sign-up-btn", method: :get %>
+  </div>
 <% end %>
