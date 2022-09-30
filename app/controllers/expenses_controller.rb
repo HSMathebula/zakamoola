@@ -24,7 +24,8 @@ class ExpensesController < ApplicationController
   # POST /expenses or /expenses.json
   def create
     @group = Group.find(params[:expense][:group_id])
-    @expense = @group.expenses.create(name: params[:expense][:name], amount: params[:expense][:amount], user_id: current_user.id)
+    @expense = @group.expenses.create(name: params[:expense][:name], amount: params[:expense][:amount],
+                                      user_id: current_user.id)
     respond_to do |format|
       if @expense.save
         format.html { redirect_to groups_path, notice: 'Expense was successfully created.' }
