@@ -4,7 +4,7 @@ RSpec.describe 'Groups', type: :system do
   include Devise::Test::IntegrationHelpers
   before do
     driven_by(:rack_test)
-    @user = User.create(name: 'Huseyin', password: '123456', email: 'hb@gmail.com')
+    @user = User.create(name: 'Happen', password: '123456', email: 'hb@gmail.com')
     @group = @user.groups.create(name: 'Subscription', icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg')
     @expense = @group.expenses.create(name: 'Netflix payment', amount: '99', user_id: @user.id)
     @expense2 = @group.expenses.create(name: 'Spotify payment', amount: '99', user_id: @user.id)
