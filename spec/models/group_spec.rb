@@ -6,12 +6,14 @@ RSpec.describe Group, type: :model do
   end
   context 'validations' do
     it 'is valid with valid attributes' do
-      group = Group.new(name: 'Food', icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', user_id: @user.id)
+      group = Group.new(name: 'Food',
+                        icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', user_id: @user.id)
       expect(group).to be_valid
     end
 
     it 'is not valid without a name' do
-      group = Group.new(name: nil, icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', user_id: @user.id)
+      group = Group.new(name: nil,
+                        icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', user_id: @user.id)
       expect(group).to_not be_valid
     end
 
@@ -21,7 +23,8 @@ RSpec.describe Group, type: :model do
     end
 
     it 'is not valid without user id' do
-      group = Group.new(name: 'Food', icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', user_id: nil)
+      group = Group.new(name: 'Food',
+                        icon: 'https://cdn.britannica.com/36/123536-050-95CB0C6E/Variety-fruits-vegetables.jpg', user_id: nil)
       expect(group).to_not be_valid
     end
   end
