@@ -4,7 +4,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses or /expenses.json
   def index
-    @expenses = Expense.all
+    @group = current_user.groups.find(params[:group_id])
+    @expenses = @group.expenses.order(created_at: :desc)
   end
 
   # GET /expenses/1 or /expenses/1.json
@@ -22,6 +23,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.user_id = current_user.id
+    @expense.group_id = params[:group_id]
     respond_to do |format|
       if @expense.save
         format.html { redirect_to group_expenses_path, notice: 'Expense was successfully created.' }
