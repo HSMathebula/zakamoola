@@ -77,3 +77,5 @@ gem 'ffi', '~> 1.15', '>= 1.15.5'
 gem 'rubocop', '>= 1.0', '< 2.0'
 # For authorization
 gem 'cancancan'
+
+gem 'rails_12factor', group: :production
